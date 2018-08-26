@@ -14,8 +14,8 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => res.send("Sup, foo"));
-app.use("/api/users", users);
+app.get("/", (req, res) => res.send("Sup, foo")); 
+app.use("/api/users", users); 
 app.use("/api/events", events); 
 
 const port = process.env.PORT || 5000;
