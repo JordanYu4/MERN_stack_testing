@@ -5,6 +5,8 @@ const events = require('./routes/api/events');
 const db = require('./config/keys').mongoURI;
 const app = express();
 const bodyParser = require('body-parser');
+const passport = require('passport');
+require('./config/passport')(passport);
 
 mongoose
   .connect(db,{ useNewUrlParser: true })
@@ -13,8 +15,8 @@ mongoose
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(passport.initialize());
 
-app.get("/", (req, res) => res.send("Sup, foo")); 
 app.use("/api/users", users); 
 app.use("/api/events", events); 
 
